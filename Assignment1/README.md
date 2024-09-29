@@ -7,23 +7,60 @@
 | Assignment # | 1                          |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+The project utilizes the Strategy Pattern and Factory Pattern to implement an automated vending machine system that can automatically prepare various beverages based on customer selection, including coffee and tea.
+The project design follows object-oriented design principles, providing high flexibility and extensibility. It allows for the addition of new product types, such as cakes, as well as new beverage types without needing to modify the existing code.
 
 # GitHub Repository Link:
-https://github.com/xyh9021/CS_655.git
+https://github.com/xyh9021/CS_655
 
 # Implementation Description 
 
 
 For each assignment, please answer the following:
 
-- Explain the level of flexibility in your implementation, including how new object types can
+Q: Explain the level of flexibility in your implementation, including how new object types can
 be easily added or removed in the future.
-- Discuss the simplicity and understandability of your implementation, ensuring that it is
+
+A:
+- Use of Interfaces and Inheritance:
+The CookAbility interface and Beverage superclass provide a flexible foundation for adding new object types. 
+Any new beverage or food item can easily be added by extending the Beverage class or implementing the CookAbility and Food interfaces. 
+This allows you to add new object types without modifying existing code, following the Open/Closed Principle (OCP) of SOLID design principles.
+- Use Factory Method Pattern and Strategy pattern:
+If I want to add other products such as cakes. I only need to code the cakeCooker
+  and set cooker to cakeCooker.
+  If I want to add a new beverage later, I only need to code the class of the new beverage and add information to the properties.
+
+Q: Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
-- Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
+
+A:
+- Use of Javadoc Comments:
+I've added Javadoc comments to my classes, methods, and fields, which makes it easy for others to understand the functionality and purpose of my code.
+This documentation enhances the readability and maintainability of your codebase.
+- Consistent Structure:
+The consistent structure across similar classes (Americano, Espresso, LatteMacchiato, BlackTea) ensures that any developer familiar with one part of the code can easily understand other similar parts.
+This consistency minimizes the learning curve when new developers are introduced to the project.
+
+Q: Describe how you have avoided duplicated code and why it is important.
+
+A:
+- Inheritance:
+By using inheritance (Beverage as a superclass), I’ve avoided the need to write the same method implementations across multiple classes. 
+For example, the common methods getDescription are defined once in Beverage and inherited by subclasses, reducing redundancy.
+- Centralized Utility Methods:
+Common functionalities such as reading integer inputs (getInt) and loading properties files (getFoodMap, getFoodToCookerMap) are centralized in the HelperFunction class,
+preventing the need to duplicate this logic across multiple classes.
+
+Q: If applicable, mention any design patterns you have used and explain why they were
 chosen.
+
+A:
+- Factory Method Pattern: Each beverage is made with a beverageCooker. If I want to add other products such as cakes. I only need to code the cakeCooker
+and set cooker to cakeCooker.
+- Strategy pattern: Create objects dynamically via reflection. It can reduce if-else statements. 
+And If I want to add a new beverage later, I only need to code the class of the new beverage and add information to the properties.
+
 
 
 # Maven Commands
